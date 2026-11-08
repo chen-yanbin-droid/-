@@ -1,79 +1,6 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
-//#include<iostream>
-//#include<vector>
-//#include<algorithm>
-//#include<tuple>
-//using namespace std;
-//
-//struct s
-//{
-//	int sum;
-//	int hao;
-//	int yu, shu, yin;
-//};
-//
-//int main()
-//{
-//	int n;
-//	cin >> n;
-//
-//	vector <s> grade;
-//	for (int i = 1; i <= n; i++)
-//	{
-//		int yu, shu, yin;
-//		cin >> yu >> shu >> yin;
-//		int sum = yu + shu + yin;
-//		grade.push_back({ sum, i, yu, shu, yin });
-//	}
-//	
-//	sort(grade.begin(), grade.end(), [](const s& a, const s& b) {
-//		return make_tuple(a.sum, a.yu, -a.hao) >
-//			make_tuple(b.sum, b.yu, -b.hao);
-//		});
-//
-//	int k = min(n, 5);
-//	for (int j = 0; j < k; j++)
-//	{
-//		cout << grade[j].hao << ' ' << grade[j].sum << '\n';
-//	}
-//	return 0;
-//}
 
-//#include<iostream>
-//#include<string>
-//#include<vector>
-//#include<algorithm>
-//using namespace std;
-//
-//bool cmp(string a, string b)
-//{
-//	return a + b > b + a;
-//}
-//
-//int main()
-//{
-//	ios::sync_with_stdio(false);
-//	cin.tie(nullptr);
-//
-//	int n;
-//	cin >> n;
-//
-//	vector <string> s(n);
-//	for (int i = 0; i < n; i++)
-//	{
-//		cin >> s[i];
-//	}
-//
-//	sort(s.begin(), s.end(), cmp);
-//	for (int j = 0; j < n; j++)
-//	{
-//		cout << s[j];
-//	}	
-//	return 0;
-//}
-
-
-//STL——vector
+//								STL——vector
 //#include<iostream>
 //#include<vector>
 //#include<algorithm>
@@ -143,7 +70,117 @@
 //	}
 //	else
 //		cout << "找不到" << '\n';
+// 
+//		查询数组中某一个特殊的元素的出现次数
+//	vector<int> a{1, 2, 2, 2, 3, 5};
+//	auto lo = lower_bound(a.begin(), a.end(), 2);   // 指向下标 1
+//	auto up = upper_bound(a.begin(), a.end(), 2);   // 指向下标 4
+//	cout << up - lo;             // 3，等于 2 的个数
+// 如果数组是【降序】，要传比较器 greater<int>()，并且含义会反过来：
+//	lower_bound(a.begin(), a.end(), x, greater<int>());  // 第一个 <= x
+//	upper_bound(a.begin(), a.end(), x, greater<int>());  // 第一个 < x
 //		return 0;
 //}
+
+
+//cout << boolalpha;  //作用：让之后输出的bool显示成true/false(boolalpha仅仅只是格式控制符)
+//cout << noboolalpha; // 使得bool有重新以数字的形式进行显示
+
+
+
+//#include<iterator>
+//#include<iostream>
+//#include<set>
+//using namespace std;
+//int main()
+//{
+//	ios::sync_with_stdio(false);
+//	cin.tie(nullptr);
+//
+//	set<int> s{ 1,2,3,4,5,6,7,8,9 };//set定义的数组自动去重，从小到大排序
+//	//set<int> s;
+//	int x;
+//	cin >> x;
+//	s.insert(x);
+//	for (auto a : s) cout << a << ' ';
+//	cout << '\n';
+//	
+//	//s.erase(3);//删除3这个元素
+//	
+//	//auto it = next(s.begin(), 2);
+//	//s.erase(it);// 删除下标为it的元素
+//	
+//	//【这行错误】s.erase(s.begin(), s.begin() + 2);   s.begin() + 2因为set的迭代器不是【随机显示迭代器】，而是【双向迭代器】
+//	//	方法一：agvance移动迭代器
+//	/*auto it = s.begin();
+//	advance(it, 2);
+//	s.erase(s.begin(), it);*/		//删除了前两个元素（区间内部）
+//	//	方法二：应用头文件#include<iterator>
+//	//				使用s.erase(s.begin(), next(s.begin(), 2));   //删除前两个元素
+//	//		方法一，二都遵循区间的左开右闭的规则 
+//	for (auto a : s) cout << a << ' ';
+//	cout << '\n';
+//	
+//	//寻找元素并求对应的下标——distance需要头文件#include<iterator>
+//	/*if (s.find(100) != s.end())
+//	{
+//		auto idx = distance(s.begin(), s.find(100));
+//		cout << "这个元素的下标是：" << idx << '\n';
+//	}		
+//	else
+//		cout << "这个元素不存在\n";*/
+//
+//	//s.empty（x）——判断s有无元素x；s.clear()——清除s里面的所有元素；s.count(x)——统计集合s里面x的出现次数；
+//	//s.contain(x)——判断x元素是否存在，返回值是bool类型
+//
+//	//set<int> b{ 1, 2, 3, 5, 8 };
+//	//cout << *b.lower_bound(3) << '\n';   // 3（第一个 >= 3）
+//	//cout << *b.upper_bound(3) << '\n';   // 5（第一个 > 3）
+//
+//	//		equal_range()用法示例【等价于把 lower_bound 和 upper_bound 合在一起】
+//	//set<int> s{ 1, 2, 3, 5, 8 };
+//	//auto [lo, hi] = s.equal_range(3);
+//	//cout << *lo << ' ' << *hi << '\n';          // 3 5
+//	//auto [lo2, hi2] = s.equal_range(4);
+//	//cout << boolalpha << (lo2 == hi2) << '\n';  // true（4 不存在）
+//	//cout << *lo2 << '\n';                       // 5（第一个 > 4）
+//	//auto [lo3, hi3] = s.equal_range(9);
+//	//cout << (lo3 == s.end() && hi3 == s.end()) << '\n';  // true
+//
+//	return 0;
+//}
+
+
+
+
+
+//					multiset和set的区别
+//操作						set												multiset
+//元素唯一性					唯一，自动去重									允许重复
+//insert(x)					遇到重复										不插入，返回 { 迭代器, false }	照常插入，返回迭代器
+//count(x)					只能是 0 或 1									可能是 0、1、2、3…
+//find(x)						存在则指向 x									指向某个 x（不保证是第一个）
+//erase(x)					删除 0 或 1 个									删除所有等于 x 的元素 ⚠️
+//erase(迭代器)				删除该位置一个									删除该位置一个
+//equal_range(x)				区间长度 0 或 1									区间长度 = 重复次数
+//lower_bound / upper_bound	正常上下界										正好框出所有重复元素
+//迭代器类型					双向迭代器										双向迭代器
+//随机访问 it + n					❌												❌
+//下标 s[i]						❌												❌
+//头文件							<set>											<set>
+
+//multiset 只想删一个 2，必须用迭代器：
+//multiset<int> ms{ 1, 2, 2, 2, 3 };
+//ms.erase(ms.find(2));          // 只删一个 → {1, 2, 2, 3}
+//// 或
+//ms.erase(ms.lower_bound(2));   // 删第一个 2，效果相同
+
+
+//set<int> s{ 1, 2, 3, 5 };
+//auto [lo, hi] = s.equal_range(3);     // [lo, hi) 里只有 3
+//
+//multiset<int> ms{ 1, 2, 2, 2, 3 };
+//auto [lo2, hi2] = ms.equal_range(2);  // 框住所有 2
+//distance(lo2, hi2);                   // 3
 
 
