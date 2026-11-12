@@ -89,15 +89,49 @@
 //}
 
 
-//开始电脑第4题，手机21题
-#include<iostream>
-#include<vector>
-#include<string>
-#include<set>
-using namespace std;
+//输出单词出现次数
+//#include<iostream>
+//#include<vector>
+//#include<string>
+//#include<algorithm>
+//#include<map>
+//#include<tuple>
+//using namespace std;
+//
+//int main()
+//{
+//	int n, k;
+//	cin >> n >> k;
+//	map<string, int> cnt;
+//	for (int i = 0; i < n; i++)
+//	{
+//		string word;
+//		cin >> word;
+//		cnt[word]++;
+//	}
+//
+//	vector<pair<string, int>> s;
+//	for (const auto &q : cnt)
+//	{
+//		s.push_back({q.first, q.second});
+//	}
+//
+//	sort(s.begin(), s.end(), [](const pair<string, int>& a, const pair<string, int>& b) {
+//		return make_tuple(-a.second, a.first) <
+//			make_tuple(-b.second, b.first);
+//		});
+//
+//	int count = min((int)s.size(), k);
+//	for (auto m = s.begin(); m != s.begin() + count; m++)
+//	{
+//		cout << m->first << ' ' << m->second << '\n';
+//      //迭代器的访问用->
+//	}
+//	
+//
+//	return 0;
+//}
 
-int main()
-{
-	
-	return 0;
-}
+
+
+//电脑第8题，手机21
