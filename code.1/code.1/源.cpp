@@ -21,7 +21,7 @@
 //		s.push_back(x);
 //	}
 //
-//	//		仅仅倒序输出:1——从后往前遍历for (int i = s.size() - 1; i >= 0; --i)
+//	//		【仅仅倒序输出】:1——从后往前遍历for (int i = s.size() - 1; i >= 0; --i)
 //	//					 2——反向迭代器for (auto it = s.rbegin(); it != s.rend(); ++it)
 //	//					 3——原地反转
 //	//	reverse(s.begin(), s.end());//原地反转全部元素
@@ -34,7 +34,7 @@
 //	//	cout << '\n';
 //
 //
-//	//		倒序从小到大输出
+//	//		【倒序从小到大输出】
 //  //方法一
 //	//sort(s.begin(), s.end());
 //	//ranges::reverse(s);//C++20里面进行【原地反转】
@@ -49,41 +49,55 @@
 //	return 0;
 //}
 
+//#include<iostream>
+//#include<vector>
+//#include<string>
+//#include<utility>
+//#include<algorithm>
+//#include<tuple>
+//using namespace std;
+//
+//int main()
+//{
+//	ios::sync_with_stdio(false);
+//	cin.tie(nullptr);
+//
+//	int n;
+//	cin >> n;
+//	vector<pair<string, int>> stu(n);
+//	for (auto& q : stu)
+//	{
+//		cin >> q.first >> q.second;//pair用first和second来访问两个元素
+//	}
+//	
+//	/*sort(stu.begin(), stu.end(), [](const pair<string, int>& a, const pair<string, int>& b) {
+//		if (a.second != b.second) return a.second > b.second;
+//		return a.first < b.first;
+//		});*/
+//	sort(stu.begin(), stu.end(), [](const pair<string, int>& a, const pair<string, int>& b) {
+//		return make_tuple(-a.second, a.first) <
+//			make_tuple(-b.second, b.first);
+//		});
+//
+//	for (const auto a : stu)
+//	{
+//		cout << a.first << ' ' << a.second << '\n';
+//	}
+//
+//	
+//	return 0;
+//}
+
+
+//开始电脑第4题，手机21题
 #include<iostream>
 #include<vector>
 #include<string>
-#include<utility>
-#include<algorithm>
-#include<tuple>
+#include<set>
 using namespace std;
 
 int main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr);
-
-	int n;
-	cin >> n;
-	vector<pair<string, int>> stu(n);
-	for (auto& q : stu)
-	{
-		cin >> q.first >> q.second;//pair用first和second来访问两个元素
-	}
-	
-	/*sort(stu.begin(), stu.end(), [](const pair<string, int>& a, const pair<string, int>& b) {
-		if (a.second != b.second) return a.second > b.second;
-		return a.first < b.first;
-		});*/
-	sort(stu.begin(), stu.end(), [](const pair<string, int>& a, const pair<string, int>& b) {
-		return make_tuple(-a.second, a.first) <
-			make_tuple(-b.second, b.first);
-		});
-
-	for (const auto a : stu)
-	{
-		cout << a.first << ' ' << a.second << '\n';
-	}
-
 	
 	return 0;
 }
